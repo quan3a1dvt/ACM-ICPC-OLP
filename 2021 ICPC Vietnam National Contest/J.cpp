@@ -61,7 +61,7 @@ int main(){
         {1, 0, 1, 0, 1, 0},
         {1, 1, 0, 0, 3, 0},
         {0, 0, 0, 0, 1, 0},
-        {0, 0, 0, 0, 3, 0},
+        {0, 0, 0, 0, 3, 0}, 
         {0, 0, 0, 0, 7, 0},
         {0, 0, 0, 0, 9, 0},
         {1, 1, 1, 1, 1, 0},
@@ -80,13 +80,16 @@ int main(){
             res.push_back(s);
         }
         else if (i == 8){
-            while(a[move[i]] != 0){
-                rotate(moveres[i][4]);
-                dem++;
+            if (a[move[i]] != 0){
+                while(a[move[i]] != 0){
+                    rotate(moveres[i][4]);
+                    dem++;
+                }
+                moveres[i][5] = dem;
+                FOR(j,0,5) s += (to_string(moveres[i][j]) + " ");
+                res.push_back(s); 
             }
-            moveres[i][5] = dem;
-            FOR(j,0,5) s += (to_string(moveres[i][j]) + " ");
-            res.push_back(s);            
+           
         }
     }
     res[1] = to_string(res.size() - 2);
